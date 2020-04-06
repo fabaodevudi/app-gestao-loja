@@ -1,0 +1,99 @@
+        <div class="row">
+            <div class="form-group col-sm-10">                               
+                <h4 class="mb-12">Cadastro de Lojas</h4>    
+            </div>                     
+        </div>
+        <div class="row">                           
+            <div class="form-group col-2">                               
+                <button class="form-control btn btn-primary" type="button" id="btModal" (click)="abreNovo(template)">Nova Loja</button>
+                <button class="form-control btn btn-primary" type="button" id="btModal2" (click)="abreEdita(template)"  style="display: none;">Nova Loja</button>
+            </div>                    
+        </div>
+        <div class="row">
+            
+            <div id="modalNovaLoja" class="modal fade" >
+                <div class="modal-dialog modal-lg" role="document">
+                    <ng-template #template>
+                        <div class="modal-content">                           
+                            <div class="modal-header">
+                                <h5 class="modal-title">Cadastrar Nova Loja</h5>                                           
+                            </div>
+                            <div class="modal-body">                                              
+                                <div class="container" id="cadastro">
+                                    <div class="row">                                     
+                                        <div class="form-group col-6" >                                
+                                            <input type="text" [value]="loja.id" #id style="display: none;">
+                                        </div>
+                                    </div>
+                                    <div class="row">    
+                                        <div class="form-group col-6" >                                
+                                            <label class="control-label"  for="nome" >Nome Loja</label>                                                                      
+                                            <input type="text" class="form-control" id="nome"  required  #nome [value]="loja.nome">                                                 
+                                        </div>
+                                        <div class="form-group col-6">                                
+                                            <label class="control-label"  for="descricao">Descrição</label>                              
+                                            <input type="text" class="form-control" id="descricao"  required  #descricao [value]="loja.descricao">                                              
+                                        </div>   
+                                    </div>                                                
+                                    <div class="row">
+                                        <div class="form-group col-6">                                
+                                            <label class="control-label"  for="localizacao">Localização (Coordenadas)</label>                              
+                                            <input type="text" class="form-control" id="localizacao" required  #localizacao [value]="loja.localizacao">                                                
+                                        </div>
+                                        <div class="form-group col-6">                                
+                                            <label class="control-label"  for="categoriaLoja">Categoria</label>                              
+                                            <select id="categoriaLoja" class="form-control" #cat>
+                                                <option value="">Selecione</option>    
+                                                <option *ngFor="let cat of categorias" [value]="cat.id" [selected]="categoria.id == cat.id">{{cat.nome}}</option>                                      
+                                            </select>                                            
+                                        </div>   
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" [disabled]="!isFormValid(id.value,nome.value,descricao.value,localizacao.value,cat.value)"  (click)="save(id.value,nome.value,descricao.value,localizacao.value,cat.value)" >Salvar</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="modalRef.hide()">Cancelar</button>
+                            </div>                    
+                        </div>
+                    </ng-template>
+                </div>
+            </div>                                     
+        </div>  
+
+        <div class="row">
+            <div class="form-group col-6" >
+                <input type="text" class="form-control" id="nomeFilter"  required  [(ngModel)] ="nomeCategoriaFilter" (change)="buscarLojasPorNome()"/>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="lojas.length > 0">                            
+            <div class="col-sm-12 mb-12">
+                <div class="table-responsive  bw-tabela-simples">
+                    <table id="tabela-produtos" class="table table-striped table-hover table-bordered" >                                  
+                        <thead class="aw-table-header-solid">
+                            <tr>                                               
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th>Localização</th>                              
+                                <th>Categoria</th>                                
+                                <th width="10%">Ações</th>   
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let loja of lojas">                                               
+                                <td>{{loja.nome}}</td>
+                                <td>{{loja.descricao}}</td>
+                                <td>{{loja.localizacao}}</td>
+                                <td>{{loja.categoriaLojaDto.nome}}</td> 
+                                 <td> 
+                                    <a href="#" title="Excluir" class="fa fa-remove" style="font-size:18px;color:red;padding-left: 5px" (click)="delete(loja.id)"></a> 
+                                    <a  title="Editar"  class="fa fa-edit" style="font-size:18px;color:blue;padding-left: 5px" (click)="edita(loja);" onclick="$('#btModal2').click();"></a> 
+                                                                              
+                                </td>
+                            </tr>
+                        </tbody>    
+                    </table>                            
+                </div>
+            </div>
+        </div>
+

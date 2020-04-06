@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+.control-label.required:after { 
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 5px;
+    top:7px;
+}
+.control-label{
+
+font-weight: bold;
+}
+
+.snotify {
+    z-index: 100000 !important;
+  }
+  
+ngx-spinner .black-overlay{
+position: fixed !important;
+}
+
+@import "~ng-snotify/styles/material"

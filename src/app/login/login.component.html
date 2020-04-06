@@ -1,0 +1,42 @@
+
+	  
+	
+<div class="card border-light text-center">
+  
+    <div class="card-body">
+		
+		<div class="card-text">
+			<form  [formGroup]="form" (ngSubmit)="onSubmit()" class="form-signin">	
+				<div class="row">
+					<div class="col">
+						<h3>Login</h3>				
+						<div class="form-group">
+							<label for="email" class="control-label">Email</label>
+							<input type="text" id="email" class="form-control" formControlName="email">
+						</div>
+						<app-field-error-display [displayError]="isFieldValid('email')" errorMsg="Informe um email válido">
+						</app-field-error-display>
+						<div class="form-group">
+							<label for="password" class="control-label">Password</label>
+							<input type="password" id="password" class="form-control" formControlName="password">
+						</div>
+						<app-field-error-display [displayError]="isFieldValid('password')" errorMsg="Informe a senha">
+						</app-field-error-display>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary" [disabled]="!form.valid">
+								Submit
+							</button>
+						</div>
+						<div class="form-group">
+							<a class="font-weight-bold text-danger" [routerLink]="['/app-cadastrar-usuario']" style="padding-top: 15px;">Quero me cadastrar</a>
+						</div>
+					</div>
+				</div>	
+			</form>
+		</div>
+    </div>    
+  </div>
+
+	
+
+	

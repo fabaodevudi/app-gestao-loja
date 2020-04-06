@@ -1,0 +1,80 @@
+<div class="card w-75 form">
+    <div class="card-header font-weight-bold">Cadastro de Usuário</div>
+    <form  [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="card-body">        
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group" [ngClass]="displayFieldCss('nome')">      
+                        <label for="nome" class="control-label required">Nome</label>
+                        <input type="text" id="nome" class="form-control" formControlName="nome">
+                        <app-field-error-display [displayError]="isFieldValid('nome')" errorMsg="Nome é obrigatório">
+                        </app-field-error-display>       
+                    </div>
+                    </div>
+                <div class="col-6">
+                    <div class="form-group" [ngClass]="displayFieldCss('email')">      
+                    <label for="email" class="control-label required">Email</label>
+                    <input type="text" id="email" class="form-control" formControlName="email">
+                    <app-field-error-display [displayError]="isFieldValid('email')" errorMsg="Email é obrigatório">
+                    </app-field-error-display>       
+                    </div>
+                </div>    
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group" [ngClass]="displayFieldCss('senha')">      
+                    <label for="senha" class="control-label required">Senha</label>
+                    <input type="senha" id="senha" class="form-control" formControlName="senha">
+                    <app-field-error-display [displayError]="isFieldValid('senha')" errorMsg="Senha é obrigatório">
+                    </app-field-error-display>       
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group" [ngClass]="displayFieldCss('reSenha')">      
+                        <label for="reSenha" class="control-label required">Digite novamente a senha</label>
+                        <input type="reSenha" id="reSenha" class="form-control" formControlName="reSenha">
+                        <app-field-error-display [displayError]="isFieldValid('reSenha')" errorMsg="Repita a senha">
+                        </app-field-error-display>       
+                    </div>
+                </div>      
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group" [ngClass]="displayFieldCss('cpf')">      
+                    <label for="cpf" class="control-label required">CPF</label>
+                    <input type="cpf" id="cpf" class="form-control" formControlName="cpf">
+                    <app-field-error-display [displayError]="isFieldValid('cpf')" errorMsg="Informe o CPF válido">
+                    </app-field-error-display>       
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group" [ngClass]="displayFieldCss('telefone')">      
+                        <label for="telefone" class="control-label required">Telefone</label>
+                        <input type="telefone" id="telefone" class="form-control" formControlName="telefone">
+                        <app-field-error-display [displayError]="isFieldValid('telefone')" errorMsg="Telefone é obrigatório">
+                        </app-field-error-display>       
+                    </div>
+                </div>      
+            </div>        
+        </div> 
+        <div class="card-footer bg-transparent border-light">       
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" [disabled]="!form.valid">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </form>
+    
+</div> 
+
+
+
+
+
+
+
+
+
+
+
