@@ -16,7 +16,7 @@ export class CadastrarUsuarioComponent implements OnInit {
 
   form: FormGroup;
   usuario : UsuarioRequestDTO;
-  usuariologin: LoginRequestDTO;  
+  usuariologin: LoginRequestDTO;
 
   constructor(
     private formBuilder: FormBuilder,
